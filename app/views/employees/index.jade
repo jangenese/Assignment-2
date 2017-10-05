@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    h1.
+         #{title}
+    ul
+        - each employee, i in employees
+            li
+                = employee._id
+                
+                
+               
+                p
+                    a(href='/api/employees/#{employee._id}') Show My Info
+                p
+                    a(href='/api/books/#{employee._id}') Show My Books
+                p
+                    a(href='/api/messages/#{employee._id}') Show My Messages
+                p
+                    a(href='/api/todos/#{employee._id}') Show My Todos

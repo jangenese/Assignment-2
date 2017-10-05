@@ -1,0 +1,166 @@
+<div class="box box-primary">
+  <div class="box-header">
+    <i class="ion ion-clipboard"></i>
+    <h3 class="box-title">To Do List</h3>
+    <div class="box-tools pull-right">
+      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#newModal" ><i class="fa fa-plus"></i> Add item</button>
+    </div>
+  </div>
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+      <thead>
+        <tr role="row">
+          <th class="sorting"><a href="" ng-click="sortField='date'; sortReverse = !sortReverse" style="color:black;">Date<span ng-show="sortField=='date'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span> </a></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="t in todos |orderBy:sortField:sortReverse" class="media">
+          <td><span class="text"><p class={{t.textClass}}>{{t.description}}</p></span><small class={{t.iClass}}><i class="fa fa-clock-o"></i> {{t.status}}</small>
+            </br>
+            <span class="text">{{t.date | date:'shortDate' }}</span>
+            <!-- Emphasis label -->
+
+            <!-- General tools such as edit or delete-->
+            <div class="tools">
+              <i class="fa fa-edit" data-toggle="modal" data-target="#editModal" ng-click="editForm.init(t.id)"></i>
+              <i class="fa fa-trash-o" ng-click="delete(t.id)"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div id="editModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Todo</h4>
+      </div>
+      <div class="modal-body">
+
+        <form name="editTodo" action="#"  >
+          <div class="box-body">
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" ng-model="editForm.date">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Status</label>
+              <div class="col-sm-10">
+                <select class="form-control" ng-model="editForm.status">
+                  <option value="active">Active
+                  </option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Complete</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Priority</label>
+              <div class="col-sm-10">
+                <select class="form-control" ng-model="editForm.priority">
+                  <option value="high">High</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="text" class="col-sm-2 control-label">Description</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="editForm.description">
+              </div>
+            </div>
+
+          </div>
+          
+         <button ng-click="editForm.submit()" data-dismiss="modal">Save</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="newModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Todo</h4>
+      </div>
+      <div class="modal-body">
+
+        <form name="newTodo" action="#"  >
+          <div class="box-body">
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" ng-model="newForm.date">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Status</label>
+              <div class="col-sm-10">
+                <select class="form-control" ng-model="newForm.status">
+                  <option value="active">Active
+                  </option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Complete</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Priority</label>
+              <div class="col-sm-10">
+                <select class="form-control" ng-model="newForm.priority">
+                  <option value="high">High</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="text" class="col-sm-2 control-label">Description</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="newForm.description">
+              </div>
+            </div>
+
+          </div>
+          
+         <button ng-click="newForm.submit()" data-dismiss="modal">Save</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1.
+        MongoID #{employee._id}
+        
+      
+    p FirstName: #{employee.firstname}
+     p LastName: #{employee.lastname}
+    p guid: #{employee.guid}
+    p user: #{employee.username}
+    p salt: #{employee.salt}

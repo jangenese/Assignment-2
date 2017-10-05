@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddTodo(name="addtodo",method="post",action="/api/todos/#{empId}")
+        p Status: 
+            input#inputName(type="text", placeholder="ex. Completed", name="status")
+        p Priority:
+            input#inputBadge(type="text", placeholder="ex. High", name="priority")
+        p Date: 
+            input#inputDob(type="date", name="date")
+        p Description: 
+            input#inputBadge(type="text", placeholder="ex. Do ...", name="description")
+        p
+            button#btnSubmit(type="submit") submit

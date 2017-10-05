@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    h1.
+         #{title}
+    p
+        a(href='/todos/#{empId}/new') Create New ToDo  
+    ul
+        - each todo, i in todos
+            li
+                = todo.id
+                
+                form(action='/api/todos/#{empId}/detail/#{todo.id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+                    input(type='hidden',value='DELETE',name='_method')
+                    button(type='submit').
+                        Delete
+                p 
+                    a(href='/api/todos/#{empId}/detail/#{todo.id}/edit') Edit
+                p
+                    a(href='/api/todos/#{empId}/detail/#{todo.id}') Show Details
+                   
+                

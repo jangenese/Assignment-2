@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    h1.
+        ToDo ID #{todo.id}
+        
+    form(action='/api/todos/#{empId}/detail/#{todo.id}/edit',method='post',name='updatetodo',enctype='application/x-www-form-urlencoded')
+        p Status: 
+            input#inputName(type='text', value='#{todo.status}', name='status')
+        p Piority: 
+            input#inputBadge(type='text', value='#{todo.priority}', name='priority')
+        p Date: 
+            input#inputDob(type='date', value='#{todo.date}', name='date')
+        p Description: 
+            input#inputDob(type='text', value='#{todo.description}', name='description')
+        p 
+            input(type='hidden',value='PUT',name='_method')
+        p 
+            button#btnSubmit(type='submit').
+                Update

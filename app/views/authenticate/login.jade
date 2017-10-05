@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddTodo(name="login",method="post",action="/login")
+        p Username:
+            input#inputName(type="text", placeholder="username/email", name="username")
+        p Password:
+            input#inputBadge(type="text", placeholder="*******", name="password")
+        p
+            button#btnSubmit(type="submit") submit
+            
+            
+            
+            
